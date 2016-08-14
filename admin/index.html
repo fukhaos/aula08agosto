@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <nav>
+      <div>
+        <a href="#" class="brand-logo center">NOME DO SEU PROJETO</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h4> Area Admin </h4>
+
+      <div class="row">
+        <div class="card-panel">
+          <span class="blue-text text-darken-2" id="titulo"> Titulo do site </span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBfO89DhvlEESb2g-yjNSS-GK4lj2KGEk8",
+        authDomain: "aula08agosto.firebaseapp.com",
+        databaseURL: "https://aula08agosto.firebaseio.com",
+        storageBucket: "aula08agosto.appspot.com",
+      };
+      firebase.initializeApp(config);
+
+      var dbRef = firebase.database().ref().child("titulo");
+      var campo = document.getElementById('titulo');
+
+
+      dbRef.on("value", function(snap){
+        console.log(snap);
+        console.log(campo);
+        campo.innerText = snap.val();
+      });
+
+      dbRef.set("O MAIS BONITO DE TODOS");
+
+
+
+    </script>
+
+
+  </body>
+</html>
+
+<!-- Localized -->
